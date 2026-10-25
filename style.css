@@ -1,0 +1,161 @@
+/**
+ * Sales Dashboard — style.css
+ * ──────────────────────────────────────────────────────────────
+ * Tailwind CSS handles the bulk of layout and typography.
+ * This file adds reusable component classes that are too verbose
+ * or repetitive to inline with Tailwind utility classes.
+ */
+
+/* ─── Base ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ─── Smooth scroll for any in-page anchors ─────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Filter components ──────────────────────────────────── */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filter-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #64748b; /* slate-500 */
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0; /* slate-200 */
+  background-color: #f8fafc; /* slate-50 */
+  color: #1e293b; /* slate-800 */
+  font-size: 0.8rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  /* Custom caret arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.55rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+.filter-select:focus {
+  border-color: #3b82f6; /* blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ─── KPI Card ───────────────────────────────────────────── */
+.kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.kpi-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.kpi-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8; /* slate-400 */
+  margin-bottom: 0.35rem;
+}
+
+.kpi-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.kpi-sub {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-top: 0.3rem;
+}
+
+/* ─── Chart Card ─────────────────────────────────────────── */
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.chart-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+}
+
+.chart-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155; /* slate-700 */
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 0.6rem;
+}
+
+/* Wrapper constrains canvas height (Chart.js needs a sized parent) */
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Responsive KPI value size ──────────────────────────── */
+@media (max-width: 480px) {
+  .kpi-value {
+    font-size: 1.2rem;
+  }
+}
+
+/* ─── Skeleton loading shimmer (optional feel) ───────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ─── Scrollbar styling (Webkit) ─────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ─── Selection colour ───────────────────────────────────── */
+::selection {
+  background: rgba(59, 130, 246, 0.2);
+  color: inherit;
+}
